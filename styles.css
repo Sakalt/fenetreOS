@@ -1,0 +1,74 @@
+/* タスクバーのスタイル */
+.task-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background-color: #009688;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* タスクバーのアイコンのホバースタイル */
+.task-icon:hover {
+    background-color: #00796B;
+}
+
+/* ウィンドウのスタイル */
+.window {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ウィンドウヘッダーのスタイル */
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    cursor: move;
+}
+
+/* ウィンドウ操作ボタンのスタイル */
+.window-control {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* 閉じるボタンのスタイル */
+.window-control.close {
+    background-color: #ff5f56;
+}
+
+/* 閉じるボタンのホバースタイル */
+.window-control.close:hover {
+    background-color: red;
+}
+
+/* 最小化ボタンのスタイル */
+.window-control.minimize {
+    background-color: #ffbd2e;
+}
+
+/* 最大化ボタンのスタイル */
+.window-control.maximize {
+    background-color: #27c93f;
+}
+
+/* コンテンツのスタイル */
+.window-content {
+    padding: 10px;
+}
