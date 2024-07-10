@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (unlockButton) {
         unlockButton.addEventListener('click', () => {
             const passwordInput = document.getElementById('password-input');
-            if (passwordInput.value === 'password') { // 仮のパスワードチェック
+            if (passwordInput.value === '1234') { // 仮のパスワードチェック
                 windows['lock-screen'].style.display = 'none';
             } else {
                 alert('パスワードが間違っています');
