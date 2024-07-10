@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('unlock-button').addEventListener('click', () => {
         const passwordInput = document.getElementById('password-input').value;
-        if (passwordInput === 'password') { // 仮のパスワードチェック
+        if (passwordInput === '1234') { // パスワードを1234に変更
             lockScreen.style.display = 'none';
             desktop.style.display = 'block';
         } else {
