@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const windows = {
+        'lock-screen': document.getElementById('lock-screen'),
         'file-explorer-icon': document.getElementById('file-explorer-window'),
         'notepad-icon': document.getElementById('notepad-window'),
         'calendar-icon': document.getElementById('calendar-window'),
@@ -7,37 +8,52 @@ document.addEventListener('DOMContentLoaded', () => {
         'browser-icon': document.getElementById('browser-window'),
         'control-panel-icon': document.getElementById('control-panel-window'),
         'command-prompt-icon': document.getElementById('command-prompt-window'),
-        'lock-screen-icon': document.getElementById('lock-screen-window'),
         'setup-icon': document.getElementById('setup-window')
     };
 
-    const taskIcons = document.querySelectorAll('.task-icon');
+    const lockScreen = document.getElementById('lock-screen');
+    const desktop = document.getElementById('desktop');
 
-    taskIcons.forEach(icon => {
+    document.getElementById('unlock-button').addEventListener('click', () => {
+        const passwordInput = document.getElementById('password-input').value;
+        if (passwordInput === 'password') { // 仮のパスワードチェック
+            lockScreen.style.display = 'none';
+            desktop.style.display = 'block';
+        } else {
+            alert('パスワードが違います');
+        }
+    });
+
+    document.getElementById('start-menu-icon').addEventListener('click', () => {
+        const startMenu = document.getElementById('start-menu');
+        startMenu.style.display = startMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    const appIcons = document.querySelectorAll('.task-icon');
+    appIcons.forEach(icon => {
         icon.addEventListener('click', () => {
-            const id = icon.id;
-            Object.values(windows).forEach(win => win.style.display = 'none');
-            windows[id].style.display = 'block';
+            const windowId = icon.id;
+            windows[windowId].style.display = 'block';
         });
     });
 
-    const windowControls = document.querySelectorAll('.window-control');
-
-    windowControls.forEach(control => {
-        control.addEventListener('click', () => {
-            const windowElement = control.closest('.window');
-            if (control.classList.contains('minimize')) {
-                windowElement.style.display = 'none';
-            } else if (control.classList.contains('maximize')) {
-                windowElement.style.width = windowElement.style.width === '100%' ? '400px' : '100%';
-                windowElement.style.height = windowElement.style.height === '100%' ? '300px' : '100%';
-            } else if (control.classList.contains('close')) {
-                windowElement.style.display = 'none';
-            }
+    const startMenuItems = document.querySelectorAll('#start-menu li');
+    startMenuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const windowId = item.id.replace('start-', '') + '-icon';
+            windows[windowId].style.display = 'block';
+            document.getElementById('start-menu').style.display = 'none';
         });
     });
 
-    // ファイルエクスプローラーの追加機能
+    const closeButtons = document.querySelectorAll('.window-control.close');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.target.closest('.window').style.display = 'none';
+        });
+    });
+
+    // ファイルエクスプローラーのファイル表示機能
     const fileList = document.getElementById('file-list');
     if (fileList) {
         const files = ['file1.txt', 'file2.jpg', 'file3.pdf'];
@@ -112,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         unlockButton.addEventListener('click', () => {
             const passwordInput = document.getElementById('password-input');
             if (passwordInput.value === 'password') { // 仮のパスワードチェック
-                windows['lock-screen-icon'].style.display = 'none';
+                windows['lock-screen'].style.display = 'none';
             } else {
                 alert('パスワードが間違っています');
             }
