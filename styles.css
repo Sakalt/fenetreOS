@@ -1,6 +1,11 @@
+/* スタイルの設定 */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background-image: url('wallpaper.png');
+    background-size: cover;
+    background-position: center;
 }
 
 #lock-screen, #desktop {
